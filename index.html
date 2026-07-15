@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AEM Drag &amp; Drop Demo</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Adobe Content Advisor (Asset Selector) UMD build -->
+  <script src="https://experience.adobe.com/solutions/CQ-assets-selectors/static-assets/resources/assets-selectors.js"></script>
+</head>
+<body>
+  <button id="browseBtn">Browse AEM Assets</button>
+
+  <div class="container">
+    <div id="assets">
+      <h3>Selected Assets</h3>
+      <div id="assetList"></div>
+    </div>
+    <div id="canvas"></div>
+  </div>
+
+  <!-- Modal that hosts the Content Advisor micro-frontend -->
+  <dialog id="assetSelectorDialog">
+    <button id="closeSelectorBtn" type="button" aria-label="Close">×</button>
+    <div id="assetSelectorContainer"></div>
+  </dialog>
+
+  <script src="config.js"></script>
+  <script src="assetSelector.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
