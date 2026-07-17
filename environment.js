@@ -53,6 +53,10 @@ function onConfirmClick() {
     const environmentPropertiesInputImsOrgId = document.getElementById('environment-properties-input-ims-org-id');
     const environmentRadioItemStage = document.getElementById("environment-radio-group-stage");
 
+    // Must match the origin registered with the IMS client (IMSS allowlist).
+    // See: https://asset-selector-demo.vercel.app  (regex: https://asset-selector-demo\.vercel\.app)
+    const APP_ORIGIN = "https://asset-selector-demo.vercel.app";
+
     const initImsAuthInfo = {
         env: environmentRadioItemStage.checked ? "stage" : "prod",
         // In order to obtain an imsClientId you will need to raise a support ticket with Adobe.
@@ -60,9 +64,15 @@ function onConfirmClick() {
         imsClientId: environmentPropertiesInputImsClientId.value,
         imsScope:
             "AdobeID,openid,additional_info.projectedProductContext,read_organizations",
-        redirectUrl: window.location.href,
+        redirectUrl: APP_ORIGIN,
         imsOrg: environmentPropertiesInputImsOrgId.value,
         imsTokenService: undefined,
+        adobeImsOptions: {
+            modalSettings: {
+                allowOrigin: APP_ORIGIN,
+            },
+            useLocalStorage: true,
+        },
     };
 
     const environmentPropertiesEvent = new CustomEvent('environmentProperties', {

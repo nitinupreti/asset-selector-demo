@@ -174,14 +174,24 @@ document.addEventListener('DOMContentLoaded', function () {
     const prodImsClientId = '%%IMS_CLIENT_ID%%';
     const prodImsOrg = '%%IMS_ORG%%';
 
+    // Must match the origin registered with the IMS client (IMSS allowlist).
+    // See: https://asset-selector-demo.vercel.app  (regex: https://asset-selector-demo\.vercel\.app)
+    const APP_ORIGIN = 'https://asset-selector-demo.vercel.app';
+
     const initImsAuthInfo = {
       env: 'prod',
       imsClientId: prodImsClientId,
       imsScope:
         'AdobeID,openid,additional_info.projectedProductContext,read_organizations',
-      redirectUrl: window.location.href,
+      redirectUrl: APP_ORIGIN,
       imsOrg: prodImsOrg,
       imsAuthService: undefined,
+      adobeImsOptions: {
+        modalSettings: {
+          allowOrigin: APP_ORIGIN,
+        },
+        useLocalStorage: true,
+      },
       ...props,
     };
 
