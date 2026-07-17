@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Content Advisor Integration Guide</title>
+  <link rel="stylesheet" href="guide.css">
+  <script src="guide.js" defer></script>
+</head>
+<body>
+  <div class="dialog">
+    <h2>Content Advisor Integration Guide</h2>
+    <hr>
+    <div class="steps">
+
+      <div class="step">
+        <p><strong>Step 1</strong> — Include the <code>assets-selectors.js</code> script, which exposes <strong>PureJSSelectors</strong> on the window.</p>
+        <pre><code>&lt;script src="https://experience.adobe.com/solutions/CQ-assets-selectors/static-assets/resources/assets-selectors.js"&gt;&lt;/script&gt;</code></pre>
+      </div>
+
+      <div class="step">
+        <p><strong>Step 2</strong> — Call <code>registerContentAdvisorAuthService()</code> with your IMS auth props on page load.</p>
+        <pre><code>// In order to obtain an imsClientId you will need to raise a support ticket with Adobe.
+// Client Id's created via Adobe Developer Console will not work for Content Advisor.
+const imsAuthProps = {
+  imsClientId: IMS_CLIENT_ID,
+  imsScope: "AdobeID,openid,additional_info.projectedProductContext,read_organizations",
+  redirectUrl: window.location.href,
+};
+PureJSSelectors.registerContentAdvisorAuthService(imsAuthProps);</code></pre>
+      </div>
+
+      <div class="step">
+        <p><strong>Step 3</strong> — Call <code>renderContentAdvisorWithAuthFlow()</code> with a container element and props.</p>
+        <pre><code>PureJSSelectors.renderContentAdvisorWithAuthFlow(container, {
+  imsOrg: imsOrg,
+  onClose: () => {},
+  handleSelection: (assets) => console.log(assets),
+});</code></pre>
+      </div>
+
+    </div>
+    <button id="integration-guide-dialog-close-button" class="close-btn" aria-label="Close">&#x2715;</button>
+  </div>
+</body>
+</html>

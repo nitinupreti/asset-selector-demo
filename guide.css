@@ -1,0 +1,120 @@
+/*
+ * Copyright 2023 Adobe. All rights reserved.
+ * This file is licensed to you under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License. You may obtain a copy
+ * of the License at http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under
+ * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS
+ * OF ANY KIND, either express or implied. See the License for the specific language
+ * governing permissions and limitations under the License.
+ */
+
+/* Color tokens are driven through variables so a single dark-mode override
+   below keeps the guide readable when the OS prefers a dark color scheme. */
+.dialog {
+  --guide-surface: #fff;
+  --guide-text: #222;
+  --guide-text-muted: #666;
+  --guide-divider: #e0e0e0;
+  --guide-code-bg: #f0f0f0;
+  --guide-code-text: #222;
+  --guide-hover-bg: #f0f0f0;
+}
+
+/* The theme follows `data-theme` on the <html> element, set by the theme
+   controller in integration.js (initialized from the OS preference, with a
+   manual toggle override). */
+:root[data-theme='dark'] .dialog {
+  --guide-surface: #252525;
+  --guide-text: #f0f0f0;
+  --guide-text-muted: #bcbcbc;
+  --guide-divider: #4a4a4a;
+  --guide-code-bg: #3a3a3a;
+  --guide-code-text: #e8e8e8;
+  --guide-hover-bg: rgba(255, 255, 255, 0.1);
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, Arial, sans-serif;
+  font-size: 14px;
+  color: var(--guide-text);
+}
+
+.dialog {
+  position: relative;
+  padding: 28px 32px 32px;
+  max-width: 600px;
+  background: var(--guide-surface);
+  color: var(--guide-text);
+  border-radius: 8px;
+}
+
+h2 {
+  margin: 0 0 12px;
+  font-size: 18px;
+  padding-right: 32px;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--guide-divider);
+  margin: 0 0 24px;
+}
+
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.step p {
+  margin: 0 0 8px;
+  line-height: 1.5;
+}
+
+code {
+  font-family: 'Fira Code', 'Cascadia Code', Menlo, monospace;
+  font-size: 13px;
+  background: var(--guide-code-bg);
+  color: var(--guide-code-text);
+  padding: 2px 5px;
+  border-radius: 3px;
+}
+
+pre {
+  background: #1e1e2e;
+  color: #cdd6f4;
+  border-radius: 6px;
+  padding: 14px 16px;
+  overflow-x: auto;
+  margin: 0;
+}
+
+pre code {
+  background: none;
+  padding: 0;
+  color: inherit;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--guide-text-muted);
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.close-btn:hover {
+  background: var(--guide-hover-bg);
+  color: var(--guide-text);
+}

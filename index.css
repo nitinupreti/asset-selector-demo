@@ -1,0 +1,209 @@
+/*
+ * Copyright 2023 Adobe. All rights reserved.
+ * This file is licensed to you under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License. You may obtain a copy
+ * of the License at http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under
+ * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS
+ * OF ANY KIND, either express or implied. See the License for the specific language
+ * governing permissions and limitations under the License.
+ */
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    background-color: #f3f3f3;
+}
+h3 {
+    margin-top: 0;
+}
+.content-advisors {
+    padding: 20px;
+}
+#content-advisor-dialog {
+    border: 0;
+    border-radius: 8px;
+    padding: 0;
+    width: min(90vw, 1200px);
+    height: min(88vh, 900px);
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.24);
+}
+
+#destination-selector-dialog {
+    border: 0;
+    border-radius: 8px;
+    padding: 0;
+    width: min(90vw, 640px);
+    height: min(88vh, 700px);
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.24);
+}
+
+#content-advisor-dialog::backdrop,
+#destination-selector-dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.content-advisors {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    background: #f2f2f2;
+}
+.content-advisors > div {
+    margin-bottom: 20px;
+}
+.content-advisors > div > button {
+    padding: 10px 20px;
+    font-size: 1.5em;
+    background: #f2f2f2;
+    border: 2px solid #000;
+}
+.content-advisors > div > button:hover {
+    background: #000;
+    color: #fff;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+}
+
+.content-advisors {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+/* ── Drag and Drop page layout ───────────────────────────── */
+
+.dnd-page {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: #f5f5f5;
+}
+
+.dnd-header {
+    padding: 0 20px;
+    height: 48px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    background: white;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.dnd-header h1 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 600;
+    color: #222;
+}
+
+.dnd-layout {
+    display: flex;
+    flex: 1;
+    min-height: 0;
+}
+
+.selector-rail {
+    width: 400px;
+    min-width: 400px;
+    border-right: 1px solid #e0e0e0;
+    overflow: hidden;
+    background: white;
+}
+
+/* ── Drop zones ──────────────────────────────────────────── */
+
+.drop-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 16px;
+    padding: 16px;
+    overflow: hidden;
+}
+
+.drop-zone {
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    transition: border-color 0.15s ease, background 0.15s ease;
+    cursor: default;
+    overflow: hidden;
+}
+
+.drop-zone.drag-over {
+    border-color: #1473e6;
+    background: #eaf3ff;
+}
+
+.drop-icon {
+    width: 96px;
+    height: 49px;
+    color: #bbb;
+    margin-bottom: 10px;
+    transition: color 0.15s ease;
+}
+
+.drop-zone.drag-over .drop-icon {
+    color: #1473e6;
+}
+
+.drop-label {
+    margin: 0;
+    font-size: 13px;
+    color: #888;
+    font-family: system-ui, Arial, sans-serif;
+    transition: color 0.15s ease;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.drop-zone.drag-over .drop-label {
+    color: #1473e6;
+}
+
+.drop-list {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0;
+    width: 100%;
+    font-size: 12px;
+    font-family: system-ui, Arial, sans-serif;
+}
+
+.drop-list:empty {
+    display: none;
+}
+
+.drop-list li {
+    padding: 4px 10px;
+    border-radius: 4px;
+    background: #eaf3ff;
+    color: #1473e6;
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

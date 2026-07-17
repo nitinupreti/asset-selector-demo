@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Environment Settings</title>
+  <link rel="stylesheet" href="environment.css">
+  <script src="environment.js" defer></script>
+</head>
+<body>
+  <div class="dialog">
+    <h2>Environment settings</h2>
+    <hr>
+
+    <div class="field-group">
+      <span class="field-label">Environment</span>
+      <div id="environment-radio-group" role="radiogroup" class="radio-group">
+        <label>
+          <input type="radio" name="env" id="environment-radio-group-prod" value="prod" checked>
+          Production
+        </label>
+        <label>
+          <input type="radio" name="env" id="environment-radio-group-stage" value="stage">
+          Stage
+        </label>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <label class="field-label" for="environment-properties-input-ims-client-id">IMS Client ID</label>
+      <input type="text" id="environment-properties-input-ims-client-id" class="text-input"
+        value="%%IMS_CLIENT_ID%%">
+    </div>
+
+    <div class="field-group">
+      <label class="field-label" for="environment-properties-input-ims-org-id">IMS Org</label>
+      <input type="text" id="environment-properties-input-ims-org-id" class="text-input"
+        value="%%IMS_ORG%%">
+    </div>
+
+    <div class="actions">
+      <button id="environment-properties-button-signOut" class="btn btn-danger">Sign out</button>
+      <div class="actions-right">
+        <button id="environment-properties-button-cancel" class="btn btn-secondary">Cancel</button>
+        <button id="environment-properties-button-confirm" class="btn btn-primary">Confirm</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
