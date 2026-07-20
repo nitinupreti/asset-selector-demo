@@ -179,7 +179,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const APP_ORIGIN = 'https://asset-selector-demo.vercel.app';
 
     const initImsAuthInfo = {
-      env: 'prod',
+      env: 'dev',
       imsClientId: prodImsClientId,
       imsScope:
         'AdobeID,openid,additional_info.projectedProductContext,read_organizations',
