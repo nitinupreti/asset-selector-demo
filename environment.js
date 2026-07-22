@@ -54,7 +54,9 @@ function onConfirmClick() {
     const environmentRadioItemStage = document.getElementById("environment-radio-group-stage");
 
     // Must match the origin registered with the IMS client (IMSS allowlist).
-    // See: https://asset-selector-demo.vercel.app  (regex: https://asset-selector-demo\.vercel\.app)
+    // The allow-list entry is an anchored regex matched against the full Referer
+    // (which includes the path), so it must permit anything after the origin.
+    // See: https://asset-selector-demo.vercel.app  (regex: https://asset-selector-demo\.vercel\.app(/.*)?)
     const APP_ORIGIN = "https://asset-selector-demo.vercel.app";
 
     const initImsAuthInfo = {
@@ -64,12 +66,12 @@ function onConfirmClick() {
         imsClientId: environmentPropertiesInputImsClientId.value,
         imsScope:
             "AdobeID,openid,additional_info.projectedProductContext,read_organizations",
-        redirectUrl: APP_ORIGIN,
+        redirectUrl: window.location.href,
         imsOrg: environmentPropertiesInputImsOrgId.value,
         imsTokenService: undefined,
         adobeImsOptions: {
             modalSettings: {
-                allowOrigin: APP_ORIGIN,
+                allowOrigin: window.location.href,
             },
             useLocalStorage: true,
         },

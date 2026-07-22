@@ -180,12 +180,12 @@ document.addEventListener('DOMContentLoaded', function () {
       imsClientId: prodImsClientId,
       imsScope:
         'AdobeID,openid,additional_info.projectedProductContext,read_organizations',
-      redirectUrl: APP_ORIGIN,
+      redirectUrl: window.location.href,
       imsOrg: prodImsOrg,
       imsAuthService: undefined,
       adobeImsOptions: {
         modalSettings: {
-          allowOrigin: APP_ORIGIN,
+          allowOrigin: window.location.href,
         },
         useLocalStorage: true,
       },

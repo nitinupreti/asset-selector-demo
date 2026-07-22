@@ -13,7 +13,9 @@
         let imsInstance = null;
 
         // Must match the origin registered with the IMS client (IMSS allowlist).
-        // See: https://asset-selector-demo.vercel.app  (regex: https://asset-selector-demo\.vercel\.app)
+        // The allow-list entry is an anchored regex matched against the full Referer
+        // (which includes the path), so it must permit anything after the origin.
+        // See: https://asset-selector-demo.vercel.app  (regex: https://asset-selector-demo\.vercel\.app(/.*)?)
         const APP_ORIGIN = "https://asset-selector-demo.vercel.app";
 
         // In order to obtain an imsClientId you will need to raise a support ticket with Adobe.
@@ -21,11 +23,11 @@
         const imsProps = {
             imsClientId: "aemcs-techaspectamericasbx-assetselector",
             imsScope: "AdobeID,openid,additional_info.projectedProductContext,read_organizations",
-            redirectUrl: APP_ORIGIN,
+            redirectUrl: window.location.href,
             modalMode: true,
             adobeImsOptions: {
                 modalSettings: {
-                    allowOrigin: APP_ORIGIN,
+                    allowOrigin: window.location.href,
                 },
                 useLocalStorage: true,
             },
