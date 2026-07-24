@@ -171,7 +171,7 @@ document.addEventListener('DOMContentLoaded', function () {
   ) {
     // In order to obtain an IMS_CLIENT_ID you will need to raise a support ticket with Adobe.
     // Client Id's created via Adobe Developer Console will not work for Content Advisor.
-    const prodImsClientId = 'aemcs-tadigital-americas-assetselector';
+    const prodImsClientId = 'aemcs-techaspectamericasbx-assetselector';
     const prodImsOrg = '856F5BDE58C158A50A495D50@AdobeOrg';
     const APP_ORIGIN = 'https://asset-selector-demo.vercel.app';
 
